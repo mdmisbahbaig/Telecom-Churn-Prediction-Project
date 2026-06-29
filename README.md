@@ -127,6 +127,7 @@ Telco-Customer-Churn-Prediction/
 ├── model.pkl
 ├── preprocessor.pkl
 ├── requirements.txt
+|__ threshold.pkl
 └── README.md
 ```
 
@@ -139,12 +140,10 @@ This project includes an interactive Streamlit application where users can enter
 * Customer churn prediction
 * Churn probability
 * Risk level
-* Key factors influencing the prediction
+* Key factors affecting the prediction
 
 ---
 
 ## Future Improvements
 
-* Improve model performance using advanced tuning techniques.
-* Add explainable AI methods such as SHAP.
-* Deploy the application on cloud platforms.
+
