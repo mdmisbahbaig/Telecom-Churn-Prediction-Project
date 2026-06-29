@@ -14,15 +14,54 @@ with open('threshold.pkl', 'rb') as f:
     threshold = pickle.load(f)
 
 
-st.set_page_config(page_title = 'Telecom Churn Prediction', layout="wide")
+st.set_page_config(page_title = 'Telecom Churn Prediction using ML', layout="wide")
 
-st.title("Telecom Churn Prediction")
+st.title("Telecom Churn Prediction using ML")
 
+with st.sidebar:
+
+    st.title("📊 Project Overview")
+
+    st.markdown("""
+    **Project:** Telecom Customer Churn Prediction using ML
+
+    **Objective:**
+    Predict customers who are likely to leave the telecom company.
+
+    **Problem Type:**
+    Binary Classification
+                
+    **Tools Used in Project:**
+    - Python
+    - Numpy
+    - Pandas
+    - Matplotlib
+    - Seaborn
+    - Scikit-Learn
+    - XGBoost
+    - Streamlit
+    - GitHub
+
+    **Model Performance:**
+    - Accuracy: **81.24%**
+    - Precision: **70.03%**
+    - Recall: **57.97%**
+    - F1 Score: **63.43%**
+
+    **Key Factors Affecting Churn:**
+    - Contract Type
+    - Tenure Months
+    - Internet Service
+    - Online Security
+    - Tech Support
+    
+    **Developed By:**            
+    Md Misbah Baig""")
 
 col1, col2 = st.columns(2, gap = 'large')
 
 with col1:
-    st.subheader('Customer Information')
+    st.subheader('👤 Customer Information')
     gender = st.selectbox("Gender", ['Male', 'Female'])
 
     senior_citizen = st.selectbox("Senior Citizen", ['Yes', 'No'])
@@ -32,7 +71,7 @@ with col1:
     dependents = st.selectbox("Dependents", ['Yes', 'No'])
 
 
-    st.subheader('Billing Information')
+    st.subheader('💳 Billing Information')
 
     paperless_billing = st.selectbox("Paperless Billing", ['Yes', 'No'])
 
@@ -48,7 +87,7 @@ with col1:
 
 with col2:
 
-    st.subheader('Internet & Services')
+    st.subheader('🌐 Internet & Services')
 
     internet_service = st.selectbox("Internet Service", ['DSL', 'Fiber optic', 'No'])
 
@@ -64,7 +103,7 @@ with col2:
 
     streaming_movies = st.selectbox('Streaming Movies', ['No', 'Yes', 'No internet service'])
 
-    st.subheader('Phone Services')
+    st.subheader('📞 Phone Services')
 
     contract = st.selectbox("Contract", ['Month-to-month', 'Two year', 'One year'])
 
@@ -85,7 +124,7 @@ X_input = pd.DataFrame([[gender, senior_citizen, partner, dependents, tenure_mon
 X_trf = preprocessor.transform(X_input)
 
 if st.button("Predict"):
-    st.success("Predicted churn successfully.")
+    st.success("✅Predicted churn successfully.")
     # pred = model.predict(X_trf)
     probability = model.predict_proba(X_trf)[0][1]
     if probability >= threshold:
@@ -98,9 +137,9 @@ if st.button("Predict"):
     with col21:
         st.subheader('Prediction')
         if prediction == 1:
-            st.text('Customer is likely to churn')
+            st.text('⚠️ Customer is likely to churn')
         else:
-            st.text("Customer is not likely to churn")
+            st.text("✅ Customer is not likely to churn")
         
         pred_prob = round((model.predict_proba(X_trf)[0,1] * 100), 2)
         st.write("Churn Probability:", pred_prob,'%')
@@ -110,7 +149,7 @@ if st.button("Predict"):
         elif pred_prob > 30 and pred_prob <=70:
             st.write("Risk Level: Medium Risk")
         else:
-            st.write("Risk Level: High Risk")
+            st.write("Risk Level: ⚠️ High Risk")
 
     with col22:
 
@@ -147,7 +186,7 @@ if st.button("Predict"):
                 st.write(factor)
 
         else:
-            st.subheader("Factors Reducing Churn Risk")
+            st.subheader("📊 Factors Reducing Churn Risk")
 
             factors = []
 
