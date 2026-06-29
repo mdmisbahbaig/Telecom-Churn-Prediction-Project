@@ -16,14 +16,14 @@ with open('threshold.pkl', 'rb') as f:
 
 st.set_page_config(page_title = 'Telecom Churn Prediction using ML', layout="wide")
 
-st.title("Telecom Churn Prediction using ML")
+st.title("Customer Churn Prediction System")
 
 with st.sidebar:
 
     st.title("📊 Project Overview")
 
     st.markdown("""
-    **Project:** Telecom Customer Churn Prediction using ML
+    **Project:** Telecom Customer Churn Prediction system
 
     **Objective:**
     Predict customers who are likely to leave the telecom company.
